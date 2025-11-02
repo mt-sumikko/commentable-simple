@@ -206,7 +206,7 @@ function setup() {
     socket.on('login', (data) => {
         document.getElementById('text_number_of_joined').value = String(data.numUsers);
         flg_deactivate_comment_control = data.deactivate_comment_control;
-        document.getElementById('checkbox_deactivate_comment_control').checked = flg_deactivate_comment_control;
+        updateCommentControlStatus(flg_deactivate_comment_control);
         if (window.CommentApp) CommentApp.state.deactivateControl = flg_deactivate_comment_control;
     });
     // サーバからの定期同期イベントを受信
@@ -218,7 +218,7 @@ function setup() {
         document.getElementById('text_number_of_joined').value = String(data.numUsers);
     });
     socket.on('deactivate_comment_control', (data) => {
-        document.getElementById('checkbox_deactivate_comment_control').checked = data.control;
+        updateCommentControlStatus(data.control);
         flg_deactivate_comment_control = data.control;
         if (window.CommentApp) CommentApp.state.deactivateControl = flg_deactivate_comment_control;
     });
@@ -247,7 +247,7 @@ function setup() {
     document.getElementById("color_text")?.addEventListener('change', (e) => { changeTextColor(e); if (window.CommentApp) CommentApp.state.colorText = color_text; });
     document.getElementById("color_text_stroke")?.addEventListener('change', (e) => { changeTextOutlineColor(e); if (window.CommentApp) CommentApp.state.colorStroke = color_text_stroke; });
 
-    ["01", "02", "03", "04", "05"].forEach(n => {
+    ["01", "02", "03", "04", "05", "06"].forEach(n => {
         const el = document.getElementById(`button_emoji_reaction_${n}`); if (el) el.addEventListener('click', sendEmojiReaction);
     });
     ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09"].forEach(n => {
@@ -472,6 +472,19 @@ function changeTextOutlineColor(e) {
 }
 
 // windowResized: 未使用
+
+function updateCommentControlStatus(deactivateControl) {
+    const statusElement = document.getElementById('comment_control_status');
+    if (statusElement) {
+        if (deactivateControl) {
+            // 投稿制限解除中は非表示
+            statusElement.style.display = 'none';
+        } else {
+            // 投稿制限中は表示
+            statusElement.style.display = 'inline-block';
+        }
+    }
+}
 
 function sendEmojiReaction(e) {
     const content = e.currentTarget.innerHTML;

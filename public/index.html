@@ -53,7 +53,18 @@
 
 <body>
     <div class="container-sm">
-        <p><img class="mt-3 mb-1" src="assets/logo_text.png" height="50px"></p>
+        <div class="audience-header col-lg-12 col-xl-6">
+            <p><img class="" src="assets/logo_text.png" height="50px"></p>
+
+            <div class="controls">
+                <span id="comment_control_status" class="comment-status-text" style="display: none;">投稿制限中</span>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill helpbtn" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    <i class="bi bi-question" style="font-size: 1.25rem;"></i>
+                </button>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-lg-12 col-xl-6">
@@ -65,16 +76,8 @@
                         value="匿名"></input>
                     <span class="input-group-text" id="icon_number_of_joined"><i class="fas fa-user-friends"></i></span>
                     <input class="form-control" size="1" type="text" id="text_number_of_joined"
-                        placeholder="Number of connected user" readonly></input>
-                    <input type="checkbox" class="btn-check" id="checkbox_deactivate_comment_control" autocomplete="off"
-                        disabled>
-                    <label class="btn btn-outline-warning" for="checkbox_deactivate_comment_control"
-                        id="label_comment_control"><i class="bi bi-arrow-repeat"></i></label><br>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
-                        <i class="bi bi-file-text"></i>
-                    </button>
+                        placeholder="接続数" readonly></input>
+                    <!-- Original Position コメントコントロール・使い方モーダル -->
                 </div>
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -86,7 +89,7 @@
                                     使い方
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    aria-label="閉じる"></button>
                             </div>
                             <div class="modal-body">
                                 <!--<div class="alert alert-danger" role="alert" data-i18n="bug_notice">
@@ -144,7 +147,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                             </div>
                         </div>
                     </div>
@@ -160,6 +163,7 @@
                         <button class="comment green" id="button_emoji_reaction_03">🙋</button>
                         <button class="comment green" id="button_emoji_reaction_04">🥺</button>
                         <button class="comment green" id="button_emoji_reaction_05">🤫</button>
+                        <button class="comment green" id="button_emoji_reaction_06">🍕</button>
                         <button class="comment red" id="button_sound_reaction_00" value="0">&#x1f4f8;</button>
                         <button class="comment red" id="button_sound_reaction_01" value="1"
                             title="パチン（手を叩く音）">👏</button>
@@ -182,7 +186,7 @@
 
                 <div class="input-group mb-3">
 
-                    <ul class="dropdown-menu">
+                    <!-- <ul class="dropdown-menu">
                         <li class="dropdown-item"><input type="color" id="color_text" value="#EEEEEE"> Text
                             Color</input>
                         </li>
@@ -199,7 +203,7 @@
                             </select>
                             <span data-i18n="text_movement_direction">文字移動方向</span>
                         </li>
-                    </ul>
+                    </ul> -->
 
                     <textarea style="resize:none" rows="1" type="text" class="form-control"
                         data-i18n="[placeholder]comment_placeholder" placeholder="コメント（最大80字）"
@@ -247,7 +251,7 @@
             <!-- <div class="col-lg-12 col-xl-6">
 
                 <!-- ランキング表示エリア -->
-               <!-- <div class="row">
+            <!-- <div class="row">
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header bg-primary d-flex justify-content-between align-items-center">
@@ -296,7 +300,7 @@
                     </li>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div> -->
-                <!-- <div id="code_share"></div>
+            <!-- <div id="code_share"></div>
 
             </div> -->
         </div>
