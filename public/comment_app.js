@@ -31,6 +31,13 @@
 
     function formatTimestamp(count) {
         const d = new Date();
+        // 表示用: 時:分のみ
+        return `[${pad(d.getHours())}:${pad(d.getMinutes())}] `;
+    }
+
+    function formatTimestampFull(count) {
+        const d = new Date();
+        // 保存用: 完全な日時情報
         return `[${pad(d.getFullYear(), 4)}:${pad(d.getMonth() + 1)}:${pad(d.getDate())}:${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}-${pad(count, 4)}] `;
     }
 
@@ -52,7 +59,7 @@
         }
     }
 
-    // 差分更新：新しい行だけを追加（高速化）
+    // 差分更新：新しい行を先頭に追加（最新が上）
     function updateHistoryDisplayIncremental(newLine) {
         const perfStart = performance.now();
 
@@ -64,13 +71,12 @@
             return; // 表示しない
         }
 
-        // キャッシュに追加
-        state.displayCache += newLine;
+        // キャッシュの先頭に追加（最新が上）
+        state.displayCache = newLine + state.displayCache;
         const newLineLength = newLine.length;
 
-        // 効率的に末尾に追加: setRangeText()を使用
-        // area.value.lengthではなく、キャッシュした長さを使用
-        area.setRangeText(newLine, state.displayCacheLength, state.displayCacheLength, 'end');
+        // 先頭に追加: setRangeText()を使用
+        area.setRangeText(newLine, 0, 0, 'start');
         state.displayCacheLength += newLineLength;
 
         const perfEnd = performance.now();
@@ -126,13 +132,16 @@
             displayHistory = state.allHistory.filter(line => !line.includes('[emoji]'));
         }
 
+        // 最新が上になるように逆順にする
+        displayHistory = displayHistory.slice().reverse();
+
         // キャッシュを更新
         state.displayCache = displayHistory.join('');
         state.displayCacheLength = state.displayCache.length;
 
         // textareaに設定（innerHTML→valueに変更でパフォーマンス改善）
         area.value = state.displayCache;
-        area.scrollTop = area.scrollHeight;
+        area.scrollTop = 0; // 最新が上なので、スクロールは上部に
     }
 
     // ランキングを全体から再計算（同期時のみ使用）
