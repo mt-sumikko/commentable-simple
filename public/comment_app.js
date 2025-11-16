@@ -31,8 +31,8 @@
 
     function formatTimestamp(count) {
         const d = new Date();
-        // 表示用: 時:分のみ
-        return `[${pad(d.getHours())}:${pad(d.getMinutes())}] `;
+        // 表示用: HH:MM形式、[]なし
+        return `${pad(d.getHours())}:${pad(d.getMinutes())} `;
     }
 
     function formatTimestampFull(count) {

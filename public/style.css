@@ -293,3 +293,11 @@ button:active.comment {
   border-color: #0d6efd;
   color: #0d6efd;
 }
+
+
+/* コメント履歴のスタイル */
+#textarea_comment_history {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
