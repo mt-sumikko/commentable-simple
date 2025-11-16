@@ -120,8 +120,8 @@ function maskInappropriateWords(text) {
 
 function setup() {
     flg_deactivate_comment_control = false;
-    color_text = document.getElementById("color_text").value;
-    color_text_stroke = document.getElementById("color_text_stroke").value;
+    color_text = document.getElementById("color_text")?.value || "#EEEEEE";
+    color_text_stroke = document.getElementById("color_text_stroke")?.value || "#111111";
 
     // 保存された名前をlocalStorageから読み込み
     const savedName = localStorage.getItem('commentable_user_name');
