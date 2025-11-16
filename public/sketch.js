@@ -247,10 +247,10 @@ function setup() {
     document.getElementById("color_text")?.addEventListener('change', (e) => { changeTextColor(e); if (window.CommentApp) CommentApp.state.colorText = color_text; });
     document.getElementById("color_text_stroke")?.addEventListener('change', (e) => { changeTextOutlineColor(e); if (window.CommentApp) CommentApp.state.colorStroke = color_text_stroke; });
 
-    ["01", "02", "03", "04", "05", "06"].forEach(n => {
+    ["01", "02"].forEach(n => {
         const el = document.getElementById(`button_emoji_reaction_${n}`); if (el) el.addEventListener('click', sendEmojiReaction);
     });
-    ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09"].forEach(n => {
+    ["00", "01", "02", "03"].forEach(n => {
         const el = document.getElementById(`button_sound_reaction_${n}`); if (el) el.addEventListener('click', sendSoundReaction);
     });
     document.getElementById("download_all_comments")?.addEventListener('click', downloadAllComments);

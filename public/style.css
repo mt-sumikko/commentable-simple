@@ -79,6 +79,17 @@ textarea {}
   --padding: 0px;
 }
 
+.reaction-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 3 / 2;
+}
+
 button.comment {
   -ms-user-select: none;
   /* IE 10+ */
@@ -87,20 +98,19 @@ button.comment {
   -webkit-user-select: none;
   user-select: none;
 
-
   text-decoration: none;
-
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
-
   border-radius: 50%;
   color: #878787;
 
-  padding: var(--padding);
-  width: var(--width);
-  height: var(--height);
-  margin: var(--margin);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: solid 2px #EFEFEF;
   box-shadow: 4px 4px 9px 0px rgba(255, 255, 255, 0.45) inset, -4px -4px 9px 0px rgba(0, 0, 0, 0.06) inset;
@@ -265,3 +275,21 @@ button:active.comment {
   --bs-btn-hover-color: #fff;
   --bs-btn-active-color: #fff;
  }
+
+
+/* 送信ボタンのスタイル調整 */
+#button_send:focus,
+#button_send:active,
+#button_send:active:focus {
+  background-color: transparent !important;
+  border-color: #0d6efd !important;
+  color: #0d6efd !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+#button_send:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
