@@ -125,14 +125,10 @@ button.red {
   background-image: linear-gradient(#f7f7f7, #ffc5c5);
 }
 
-button:active.red {
-  font-size: var(--font-size-small);
-  background-image: linear-gradient(#f7f7f7, #ffc5c5);
-}
-
-button:active.comment {
+button.comment:active {
+  transform: scale(0.95);
   box-shadow: 3px 3px 6px 0px rgba(157, 157, 157, 0.07) inset, -2px -2px 3px 0px rgba(255, 255, 255, 0.52) inset;
-  transition: all 100ms 0s ease;
+  transition: all 150ms 0s ease;
 }
 
 .nav {

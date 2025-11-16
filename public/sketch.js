@@ -204,6 +204,7 @@ function setup() {
         }, 1000);
     });
     socket.on('login', (data) => {
+        console.log('Connected to room, users:', data.numUsers);
         document.getElementById('text_number_of_joined').value = String(data.numUsers);
         flg_deactivate_comment_control = data.deactivate_comment_control;
         updateCommentControlStatus(flg_deactivate_comment_control);
@@ -381,10 +382,13 @@ async function newComment(data) {
 }
 
 function pushedSendButton() {
+    const comment = document.getElementById("text_comment").value;
+    const name = document.getElementById("text_my_name").value;
+    console.log('Send button clicked:', { comment, name });
     sendComment(
-        document.getElementById("text_comment").value,
+        comment,
         false,
-        document.getElementById("text_my_name").value,
+        name,
         false, 0,
         false, 0,
         -1
