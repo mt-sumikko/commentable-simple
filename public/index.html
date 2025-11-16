@@ -104,7 +104,7 @@
                                     <li data-i18n="clap">👏：パチン（手を一回叩く音）</li>
                                     <li data-i18n="pop">🎉：パーン（クラッカーを鳴らす音）</li>
                                     <li data-i18n="woo-hoo">🥳：ヒュー！（歓声） </li>
-                                   <!-- <li data-i18n="wow">😮：へ〜</li>
+                                    <!-- <li data-i18n="wow">😮：へ〜</li>
                                     <li data-i18n="wait">🤔：ちょっとまって</li>
                                     <li data-i18n="ok">👌：オーケー </li>
                                     <li data-i18n="pow">👊：バシ！（パンチの音）</li>
@@ -209,27 +209,29 @@
                     </button>-->
                 </div>
 
-                <div class="d-grid gap-2 d-flex justify-content-end position-relative mb-3">
-                    <div class="position-absolute top-0 end-0 m-2" style="z-index: 10;">
+                <div class="mb-3">
+                     <textarea id="textarea_comment_history" readonly class="form-control mb-2" rows="4"
+                        placeholder="コメント履歴"></textarea>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="checkbox_emoji_filter" checked>
                             <label class="form-check-label small" for="checkbox_emoji_filter">
                                 絵文字フィルタ
                             </label>
                         </div>
+                        <div class="d-flex gap-2">
+                            <button type="button"
+                                class="btn btn-sm btn-outline-secondary rounded-pill"
+                                id="download_all_comments">
+                                <i class="bi bi-download"></i>
+                            </button>
+                            <button type="button"
+                                class="btn btn-sm btn-outline-primary rounded-pill"
+                                id="sync_comments" title="Sync comments from server">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </button>
+                        </div>
                     </div>
-                    <textarea id="textarea_comment_history" readonly class="form-control" rows="4"
-                        placeholder="コメント履歴"></textarea>
-                    <button type="button"
-                        class="me-2 mb-2 btn btn-sm btn-outline-secondary position-absolute bottom-0 rounded-pill"
-                        id="download_all_comments" style="right: 40px;">
-                        <i class="bi bi-download"></i>
-                    </button>
-                    <button type="button"
-                        class="me-2 mb-2 btn btn-sm btn-outline-primary position-absolute bottom-0 end-0 rounded-pill"
-                        id="sync_comments" title="Sync comments from server">
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </button>
                 </div>
 
 
