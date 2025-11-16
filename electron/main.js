@@ -26,8 +26,8 @@ process.on('uncaughtException', (error) => {
 });
 
 // サーバー切り替えフラグ（true: ローカル開発, false: 本番環境）
-const USE_LOCAL_SERVER = false;
-// const USE_LOCAL_SERVER = true;
+// const USE_LOCAL_SERVER = false;
+const USE_LOCAL_SERVER = true;
 
 // ベースURL設定
 function getBaseUrl() {
